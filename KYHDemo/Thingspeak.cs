@@ -12,13 +12,13 @@ namespace KYHDemo
         //{
         //    throw new NotImplementedException();
         //}
-        public void SendData(int temperature, int humidity)
+        public void SendData(SensorData sensorData)
         {
             // https://api.thingspeak.com/update?api_key=5GA2OBFSGWT3TKF3&field1=12&field2=4
             
             var httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri("https://api.thingspeak.com");
-            var response = httpClient.GetAsync($"/update?api_key=5GA2OBFSGWT3TKF3&field1={temperature}&field2={humidity}").Result;
+            var response = httpClient.GetAsync($"/update?api_key=5GA2OBFSGWT3TKF3&field1={sensorData.Temperature}&field2={sensorData.Humidity}").Result;
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine("Data sent to ThingSpeak successfully.");

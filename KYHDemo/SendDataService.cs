@@ -26,7 +26,7 @@ namespace KYHDemo
         public void SendData(SensorData sensorData)
         {
             var thingspeak = new Thingspeak();
-            thingspeak.SendData(sensorData.Temperature, sensorData.Humidity);
+            thingspeak.SendData(sensorData);
         }
     }
 }
